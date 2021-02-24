@@ -28,8 +28,21 @@ matrix:
       env: SONATYPE_PUBLISH=false
     - scala: 2.13.4
       jdk: openjdk15
-      env: SONATYPE_PUBLISH=false      
-
+      env: SONATYPE_PUBLISH=false 
+ #Added power support
+    - scala: 2.12.13
+      jdk: openjdk11
+      env: SONATYPE_PUBLISH=false
+      arch: ppc64le
+    - scala: 2.13.4
+      jdk: openjdk11
+      env: SONATYPE_PUBLISH=false
+      arch: ppc64le
+    - scala: 2.13.4
+      jdk: openjdk15
+      env: SONATYPE_PUBLISH=false 
+      arch: ppc64le
+      
 after_success:
   - >
       test "${TRAVIS_PULL_REQUEST}" = 'false' && test "${SONATYPE_PUBLISH}" = 'true' &&
@@ -51,4 +64,3 @@ env:
 
 notifications:
   email: travis-ci@fasterxml.com
-

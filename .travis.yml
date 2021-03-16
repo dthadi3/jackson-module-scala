@@ -43,6 +43,9 @@ matrix:
       env: SONATYPE_PUBLISH=false 
       arch: ppc64le
       
+script:
+  - sbt ++$TRAVIS_SCALA_VERSION -jvm-opts travis/jvmopts test
+  
 after_success:
   - >
       test "${TRAVIS_PULL_REQUEST}" = 'false' && test "${SONATYPE_PUBLISH}" = 'true' &&
